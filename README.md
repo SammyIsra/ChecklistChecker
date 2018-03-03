@@ -1,4 +1,4 @@
-# Checklist Checker
+# Checklist Checker 📝
 A tiny Node CLI tool to make sure you don't forget anything. Slightly glorified todo checklist.
 
 Still under construction, it's my first time doing Node CLI tooling.
