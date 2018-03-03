@@ -1,4 +1,6 @@
-const program = require("commander");
+#!/usr/bin/env node
+
+import program from "commander";
 // const HandleCreate = require("./Commands/CreateChecklist");
 // const HandleCheck = require("./Commands/CheckChecklist");
 
@@ -9,7 +11,7 @@ program
   .description("Checklist Checker")
 
 program
-  .command("check [fileName]", {isDefault: true})
+  .command("check [fileName]")
   .alias("c")
   .description("Check an existing checklist (Uses checklist.json by default)")
   .action( (fileName: string):void => console.log(`You are checking a checklist! ${fileName}`));

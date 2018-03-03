@@ -1,1 +1,1 @@
-declare const program: any;
+export {};
