@@ -1,3 +1,0 @@
-function CreateChecklist(): void {
-  
-}

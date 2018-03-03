@@ -12,8 +12,10 @@
   "author": "Sammy Israwi <sammy.israwi@gmail.com> (http://sammyis.me/)",
   "license": "MIT",
   "dependencies": {
+    "@types/jsonfile": "4.0.1",
     "commander": "2.14.1",
-    "inquirer": "5.1.0"
+    "inquirer": "5.1.0",
+    "jsonfile": "4.0.0"
   },
   "devDependencies": {
     "@types/node": "9.4.6",
