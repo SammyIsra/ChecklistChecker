@@ -39,12 +39,17 @@ function CheckChecklist(fileName: string = "./checklist.json"): void {
     handleQuestions(
       jsonChecklist.checklist
       .map((item: string | ChecklistItem) => typeof item === "string" ? CheckListItemFromString(item) : item
-    ));
-
+    ))
+    .then( (preflightPassed: boolean) => {
+      if(preflightPassed)
+        console.log("You're good!");
+      else
+        console.log("You still have worked to do, dont you?");
+    });
   });
 }
 
-async function handleQuestions(questions: ChecklistItem[]): Promise<Boolean>{
+async function handleQuestions(questions: ChecklistItem[]): Promise<boolean>{
   for(let i in questions){
     let questionItem:ChecklistItem = questions[i]; 
     let question: Question = {
@@ -53,6 +58,8 @@ async function handleQuestions(questions: ChecklistItem[]): Promise<Boolean>{
       message: questionItem.text,
     }
     let answer = await inquirer.prompt([question]);
+    if(!answer[i])
+      return false;
   }
   return true;
 }
