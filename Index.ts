@@ -7,9 +7,9 @@ import {
 } from "./Commands/ChecklistCommands";
 
 program
-  .version("0.0.1")
-  .name("checklist")
-  .description("Checklist Checker")
+  .version("0.1.0")
+  .name("prefly")
+  .description("Prefly list checker")
 
 program
   .command("check [fileName]")

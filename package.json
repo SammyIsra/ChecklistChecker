@@ -1,5 +1,5 @@
 {
-  "name": "checklist",
+  "name": "prefly",
   "version": "0.1.0",
   "description": "A checklist to make sure you got everything before doing something (like commiting!)",
   "main": "index.js",
