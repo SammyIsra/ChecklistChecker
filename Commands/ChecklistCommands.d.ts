@@ -1,19 +1,19 @@
 /**
  *
- * @param {String} [fileName] - Name of the file where we want to create the checklist
+ * @param {string} [fileName] - Name of the file where we want to create the checklist
  * @example
  *  CreateChecklist("./CommitChecklist.json");
  * @example
  *  CreateChecklist();
  */
-declare function CreateChecklist(fileName?: String): void;
+declare function CreateChecklist(fileName?: string): void;
 /**
  *
- * @param {String} [fileName] - Name of the file where the checklist we want to check is
+ * @param {string} [fileName] - Name of the file where the checklist we want to check is
  * @example
  *  CheckChecklist("./CommitChecklist.json");
  * @example
  *  CheckChecklist();
  */
-declare function CheckChecklist(fileName?: String): void;
+declare function CheckChecklist(fileName?: string): void;
 export { CreateChecklist, CheckChecklist };
