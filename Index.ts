@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
 import program from "commander";
-
-import {CheckChecklist as HandleCheck, CreateChecklist as HandleCreate} from "./Commands/ChecklistCommands";
+import {
+  CheckChecklist as HandleCheck, 
+  CreateChecklist as HandleCreate
+} from "./Commands/ChecklistCommands";
 
 program
   .version("0.0.1")

@@ -31,9 +31,13 @@ function CreateChecklist(fileName: string = "./checklist.json"): void {
  *  CheckChecklist();
  */
 function CheckChecklist(fileName: string = "./checklist.json"): void {
-  console.log(`CheckChecklist was called for ${fileName}`);
   jsonfile.readFile(fileName, null, function(err, jsonChecklist){
-    handleQuestions(jsonChecklist.checklist
+
+    if(err)
+      throw err;
+
+    handleQuestions(
+      jsonChecklist.checklist
       .map((item: string | ChecklistItem) => typeof item === "string" ? CheckListItemFromString(item) : item
     ));
 
@@ -41,7 +45,6 @@ function CheckChecklist(fileName: string = "./checklist.json"): void {
 }
 
 async function handleQuestions(questions: ChecklistItem[]): Promise<Boolean>{
-
   for(let i in questions){
     let questionItem:ChecklistItem = questions[i]; 
     let question: Question = {
@@ -50,7 +53,6 @@ async function handleQuestions(questions: ChecklistItem[]): Promise<Boolean>{
       message: questionItem.text,
     }
     let answer = await inquirer.prompt([question]);
-    console.log(answer);
   }
   return true;
 }
