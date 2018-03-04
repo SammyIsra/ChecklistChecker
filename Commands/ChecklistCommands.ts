@@ -33,22 +33,26 @@ function CreateChecklist(fileName: string = "./checklist.json"): void {
 function CheckChecklist(fileName: string = "./checklist.json"): void {
   console.log(`CheckChecklist was called for ${fileName}`);
   jsonfile.readFile(fileName, null, function(err, jsonChecklist){
-    handleQuestions(jsonChecklist.checklist);
+    handleQuestions(jsonChecklist.checklist
+      .map((item: string | ChecklistItem) => typeof item === "string" ? CheckListItemFromString(item) : item
+    ));
 
   });
 }
 
-async function handleQuestions(questions: string[] | ChecklistItem[]): Promise<Boolean>{
+async function handleQuestions(questions: ChecklistItem[]): Promise<Boolean>{
 
+  for(let i in questions){
+    let questionItem:ChecklistItem = questions[i]; 
+    let question: Question = {
+      name: i,
+      type: GetQuestionType(questionItem),
+      message: questionItem.text,
+    }
+    let answer = await inquirer.prompt([question]);
+    console.log(answer);
+  }
   return true;
-  // for(let questionItem of questions){
-  //   let isChecklistItem: boolean = typeof questionItem === "string" ? false : true;
-  //   let question: Question = {
-  //     name: isChecklistItem ? questionItem : questionItem.text,
-  //     type: isChecklistItem ? GetQuestionType(questionItem) : "confirm"
-  //   }
-  //   let answer = await inquirer.prompt([question])
-  // }
 }
 
 function GetQuestionType(questionIten: ChecklistItem): string {
@@ -61,6 +65,13 @@ function GetQuestionType(questionIten: ChecklistItem): string {
     case QuestionType.FreeForm:
       return "input";
   }
+}
+
+function CheckListItemFromString(str: string): ChecklistItem{
+  return {
+    text: str,
+    type: QuestionType.YesNo
+  };
 }
 
 function GetQuestionFromChecklistItem(checklistItem: ChecklistItem){
