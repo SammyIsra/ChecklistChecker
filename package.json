@@ -1,34 +1,37 @@
 {
   "name": "prefly",
-  "version": "0.1.0",
+  "version": "0.1.2-beta.7",
   "description": "A checklist to make sure you got everything before doing something (like commiting!)",
-  "main": "index.js",
+  "main": "./bin/Index.js",
+  "types": "./bin/Index.d.ts",
+  "bin": "./bin/Index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/SammyIsra/ChecklistChecker"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
+    "build": "tsc -p ./tsconfig.json",
     "dev": "tsc -p ./tsconfig.json -pretty --watch",
-    "start": "node Index.js"
+    "start": "node ./bin/Index.js",
+    "prepare": "npm run clean&&npm run build",
+    "clean": "rm -rf ./bin"
   },
   "author": "Sammy Israwi <sammy.israwi@gmail.com> (http://sammyis.me/)",
   "license": "MIT",
   "dependencies": {
-    "@types/inquirer": "0.0.36",
-    "@types/jsonfile": "4.0.1",
-    "@types/node": "9.4.6",
     "commander": "2.14.1",
     "inquirer": "5.1.0",
     "jsonfile": "4.0.0"
   },
   "devDependencies": {
+    "@types/inquirer": "0.0.36",
+    "@types/jsonfile": "4.0.1",
+    "@types/node": "9.4.6",
     "eslint": "4.18.2",
     "eslint-config-google": "0.9.1",
     "typescript": "2.7.2",
     "typescript-eslint-parser": "14.0.0"
   },
-  "preferGlobal": true,
-  "bin": "./Index.js"
+  "preferGlobal": true
 }
