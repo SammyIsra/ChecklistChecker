@@ -14,6 +14,7 @@ program
 program
   .command("check [fileName]")
   .alias("c")
+  .option("-c --critical", "This checklist is critical and should stop operation if failed")
   .description("Check an existing checklist (Uses checklist.json by default)")
   .action(HandleCheck);
 

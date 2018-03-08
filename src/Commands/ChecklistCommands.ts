@@ -40,13 +40,17 @@ function CreateChecklist(fileName: string = "./checklist.json"): void {
 /**
  * Read and handle the checkist at location [fileName] or default
  * @param {string} [fileName] - Name of the file where the checklist we want to check is
+ * @param {Object} [options] - options passed to the command
  * @example 
  *  CheckChecklist("./CommitChecklist.json");
  * @example
  *  CheckChecklist();
  */
-function CheckChecklist(fileName: string = "./checklist.json"): void {
-  
+function CheckChecklist(fileName: string = "./checklist.json", options:any ): void {
+
+  //Determine if the --critical flag is used
+  const isCritical:boolean = !!options.critical;
+
   //Ok this is a funky line. 'commander' doesn't pass an empty string if no argument is passed
   // so I give a default value to fileName
   if(typeof fileName !== "string")
@@ -64,8 +68,10 @@ function CheckChecklist(fileName: string = "./checklist.json"): void {
     .then( (preflightPassed: boolean) => {
       if(preflightPassed)
         console.log("You're good!");
-      else
+      else {
         console.log("You still have work to do, dont you?");
+        if(isCritical) process.exit(1);
+      }
     });
   });
 }
