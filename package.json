@@ -1,6 +1,6 @@
 {
   "name": "prefly",
-  "version": "0.3.0-beta.0",
+  "version": "0.3.0",
   "description": "A checklist to make sure you got everything before doing something (like commiting!)",
   "main": "./bin/Index.js",
   "types": "./bin/Index.d.ts",

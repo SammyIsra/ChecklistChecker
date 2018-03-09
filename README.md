@@ -25,6 +25,12 @@ $ prefly check [fileName]
 ```
 To check the checklist on file `fileName` (or `checklist.json`) by default.
 
+Lets say that you need to run the checklist before every time you release, and you need to cancel you operation if you don't meet every item on your list? then you should pass `-b` or `--critical` to the `check` command. For example, lets say that you run thru the list to make sure you want to print your nuclear launch codes to the screen! Your command would look like this:
+```
+$ prefly check --critical ./nuclearLaunchChecklist.json&&echo $NUCLEAR_CODES 
+```
+If you don't pass the checklist, you don't get the nuclear codes! Everyone wins!
+
 This is still under construction and forever considering improvements to it. 
 
 :dizzy: Enjoy! 
