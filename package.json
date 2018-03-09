@@ -1,10 +1,18 @@
 {
   "name": "prefly",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A checklist to make sure you got everything before doing something (like commiting!)",
   "main": "./bin/Index.js",
   "types": "./bin/Index.d.ts",
   "bin": "./bin/Index.js",
+  "keywords": [
+    "checklist",
+    "devops",
+    "ci",
+    "cd",
+    "command line",
+    "cli"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/SammyIsra/ChecklistChecker"
